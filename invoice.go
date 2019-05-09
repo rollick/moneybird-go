@@ -29,6 +29,7 @@ type Invoice struct {
 	CreatedAt         string            `json:"created_at,omitempty"`
 	UpdatedAt         string            `json:"updated_at,omitempty"`
 	Details           []*InvoiceDetails `json:"details_attributes,omitempty"`
+	CustomFields      []*CustomField    `json:"custom_fields_attributes,omitempty"`
 	TotalPaid         string            `json:"total_paid,omitempty"`
 	TotalUnpaid       string            `json:"total_unpaid,omitempty"`
 	TotalUnpaidBase   string            `json:"total_unpaid_base,omitempty"`
