@@ -59,7 +59,7 @@ func TestInvoiceGatewayCRUD(t *testing.T) {
 				Description: "Test Service",
 			},
 		},
-		CustomFields: []*CustomField{},
+		CustomFields: []*CustomFieldAttribute{},
 	}
 	invoice, err = gateway.Create(invoice)
 	if err != nil {

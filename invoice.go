@@ -7,37 +7,37 @@ import (
 
 // Invoice contains all invoice details
 type Invoice struct {
-	ID                string            `json:"id,omitempty"`
-	AdministrationID  string            `json:"administration_id,omitempty"`
-	InvoiceID         string            `json:"invoice_id,omitempty"`
-	Contact           Contact           `json:"contact,omitempty"`
-	ContactID         string            `json:"contact_id,omitempty"`
-	UpdateContact     bool              `json:"update_contact,omitempty"`
-	WorkflowID        string            `json:"workflow_id,omitempty"`
-	DocumentStyleID   string            `json:"document_style_id,omitempty"`
-	IdentityID        string            `json:"identity_id,omitempty"`
-	State             string            `json:"state,omitempty"`
-	InvoiceDate       string            `json:"invoice_date,omitempty"`
-	DueDate           string            `json:"due_date,omitempty"`
-	PaymentConditions string            `json:"payment_conditions,omitempty"`
-	Reference         string            `json:"reference,omitempty"`
-	Language          string            `json:"language,omitempty"`
-	Currency          string            `json:"currency,omitempty"`
-	Discount          string            `json:"discount,omitempty"`
-	PaidAt            string            `json:"paid_at,omitempty"`
-	SentAt            string            `json:"sent_at,omitempty"`
-	CreatedAt         string            `json:"created_at,omitempty"`
-	UpdatedAt         string            `json:"updated_at,omitempty"`
-	Details           []*InvoiceDetails `json:"details_attributes,omitempty"`
-	CustomFields      []*CustomField    `json:"custom_fields_attributes,omitempty"`
-	TotalPaid         string            `json:"total_paid,omitempty"`
-	TotalUnpaid       string            `json:"total_unpaid,omitempty"`
-	TotalUnpaidBase   string            `json:"total_unpaid_base,omitempty"`
-	PricesAreInclTax  bool              `json:"prices_are_incl_tax,omitempty"`
-	TotalPriceExclTax string            `json:"total_price_excl_tax,omitempty"`
-	TotalPriceInclTax string            `json:"total_price_incl_tax,omitempty"`
-	URL               string            `json:"url,omitempty"`
-	Notes             []*InvoiceNote    `json:"notes,omitempty"`
+	ID                string                  `json:"id,omitempty"`
+	AdministrationID  string                  `json:"administration_id,omitempty"`
+	InvoiceID         string                  `json:"invoice_id,omitempty"`
+	Contact           Contact                 `json:"contact,omitempty"`
+	ContactID         string                  `json:"contact_id,omitempty"`
+	UpdateContact     bool                    `json:"update_contact,omitempty"`
+	WorkflowID        string                  `json:"workflow_id,omitempty"`
+	DocumentStyleID   string                  `json:"document_style_id,omitempty"`
+	IdentityID        string                  `json:"identity_id,omitempty"`
+	State             string                  `json:"state,omitempty"`
+	InvoiceDate       string                  `json:"invoice_date,omitempty"`
+	DueDate           string                  `json:"due_date,omitempty"`
+	PaymentConditions string                  `json:"payment_conditions,omitempty"`
+	Reference         string                  `json:"reference,omitempty"`
+	Language          string                  `json:"language,omitempty"`
+	Currency          string                  `json:"currency,omitempty"`
+	Discount          string                  `json:"discount,omitempty"`
+	PaidAt            string                  `json:"paid_at,omitempty"`
+	SentAt            string                  `json:"sent_at,omitempty"`
+	CreatedAt         string                  `json:"created_at,omitempty"`
+	UpdatedAt         string                  `json:"updated_at,omitempty"`
+	Details           []*InvoiceDetails       `json:"details_attributes,omitempty"`
+	CustomFields      []*CustomFieldAttribute `json:"custom_fields_attributes,omitempty"`
+	TotalPaid         string                  `json:"total_paid,omitempty"`
+	TotalUnpaid       string                  `json:"total_unpaid,omitempty"`
+	TotalUnpaidBase   string                  `json:"total_unpaid_base,omitempty"`
+	PricesAreInclTax  bool                    `json:"prices_are_incl_tax,omitempty"`
+	TotalPriceExclTax string                  `json:"total_price_excl_tax,omitempty"`
+	TotalPriceInclTax string                  `json:"total_price_incl_tax,omitempty"`
+	URL               string                  `json:"url,omitempty"`
+	Notes             []*InvoiceNote          `json:"notes,omitempty"`
 }
 
 // InvoiceDetails is a line on an invoice
@@ -50,6 +50,12 @@ type InvoiceDetails struct {
 	TaxRateID       string `json:"tax_rate_id,omitempty"`
 	LedgerAccountID string `json:"ledger_account_id,omitempty"`
 	Destroy         bool   `json:"_destroy,omitempty"`
+}
+
+// CustomFieldAttribute is a custom field value on an invoice
+type CustomFieldAttribute struct {
+	ID    string `json:"id"`
+	Value string `json:"value"`
 }
 
 // InvoiceGateway encapsulates all /sales_invoices related endpoints
