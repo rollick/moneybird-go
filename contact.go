@@ -133,3 +133,20 @@ func (c *ContactGateway) Delete(contact *Contact) error {
 
 	return res.error()
 }
+
+// GetByCustomer returns the contact with the specified customer id, or nil
+func (c *ContactGateway) GetByCustomer(ID string) (*Contact, error) {
+	var err error
+
+	res, err := c.execute("GET", "contacts/customer_id/"+ID, nil)
+	if err != nil {
+		return nil, err
+	}
+
+	switch res.StatusCode {
+	case 200:
+		return res.contact()
+	}
+
+	return nil, res.error()
+}

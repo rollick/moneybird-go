@@ -9,9 +9,10 @@ func TestContactGatewayCRUD(t *testing.T) {
 
 	// 1. Create
 	testContact, err = gateway.Create(&Contact{
-		Email:     "johndoe@email.com",
-		FirstName: "John",
-		LastName:  "Doe",
+		Email:      "johndoe@email.com",
+		FirstName:  "John",
+		LastName:   "Doe",
+		CustomerID: "123456789",
 	})
 	if err != nil {
 		t.Fatalf("ContactGateway.Create: %s", err)
@@ -44,6 +45,16 @@ func TestContactGatewayCRUD(t *testing.T) {
 
 	if testContact.LastName != "Doe" {
 		t.Errorf("ContactGateway.Get: invalid last name %#v", testContact.LastName)
+	}
+
+	// 5. GetByCustomer
+	testContact, err = gateway.GetByCustomer(testContact.CustomerID)
+	if err != nil {
+		t.Errorf("ContactGateway.GetByCustomer: %s", err)
+	}
+
+	if testContact.CustomerID != "123456789" {
+		t.Errorf("ContactGateway.GetByCustomer: invalid customer_id %#v", testContact.CustomerID)
 	}
 
 }
